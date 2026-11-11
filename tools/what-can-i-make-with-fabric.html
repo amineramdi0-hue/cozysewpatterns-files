@@ -1,0 +1,575 @@
+<!-- wp:html -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+.cst{
+  --bg:#fffaf5; --paper:#ffffff; --peach:#fae8dc; --dot:#efd6c5;
+  --ink:#2f2a28; --soft:#6b5a50; --line:#ead8cb;
+  --green:#3e8e59; --green-d:#2f6e45; --green-l:#e3f1e8;
+  --sun:#f1c94f; --sun-l:#fdf1c8; --clay:#a4512f; --clay-l:#f8dfd1;
+  --mat:#2f2a28; --mat-grid:rgba(241,201,79,.16);
+  --acc:#d9a917; --acc-d:#8a6a07; --acc-l:#fdf1c8; --on-acc:#2f2a28; --fill:#fde9b4; --fill2:#f6d3bf;
+  --f-display:"Lora",Georgia,serif; --f-body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif; --f-hand:"Caveat","Segoe Print",cursive;
+}
+.cst *{box-sizing:border-box}
+.cst{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-block:8px 40px}
+.cst .wrap{max-width:860px;margin:0 auto;display:grid;gap:28px}
+.cst h1,.cst h2,.cst h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.cst a{color:var(--clay)}
+.cst :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.cst .intro{display:grid;gap:8px}
+.cst .hand{font-family:var(--f-hand);font-size:26px;color:var(--clay);line-height:1;margin:0}
+.cst .intro h1{font-size:clamp(30px,6vw,44px)}
+.cst .intro p{margin:0;color:var(--soft);max-width:60ch}
+.cst .mat{background:var(--mat);background-image:linear-gradient(var(--mat-grid) 1px,transparent 1px),linear-gradient(90deg,var(--mat-grid) 1px,transparent 1px);background-size:24px 24px;
+  border-radius:22px;padding:10px;color:#fff}
+.cst .mat-in{background:var(--paper);color:var(--ink);border-radius:16px;padding:22px;display:grid;gap:20px}
+.cst .q{display:grid;gap:8px;min-width:0}
+.cst .q > label,.cst .q > .lbl{font-weight:600;font-size:15px}
+.cst .q small{color:var(--soft);font-size:13px}
+.cst .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cst .len{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}
+.cst .len input{width:130px;font:600 24px var(--f-display);color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:8px 14px}
+.cst .len input:focus{border-color:var(--acc);outline:none}
+.cst .chips{display:flex;flex-wrap:wrap;gap:8px}
+.cst .chip{position:relative}
+.cst .chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.cst .chip span{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);font-size:14px;font-weight:600;transition:background .15s,border-color .15s}
+.cst .chip input:checked + span{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.cst .chip input:focus-visible + span{outline:3px solid var(--sun);outline-offset:2px}
+.cst .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.cst .check input{width:20px;height:20px;accent-color:var(--acc);margin-top:2px;flex:none}
+.cst select{font:500 15px var(--f-body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.cst .answer{background:var(--peach);border-radius:22px;padding:24px;display:grid;gap:16px}
+.cst .answer .big{font-family:var(--f-display);font-size:clamp(22px,4.4vw,30px);margin:0}
+.cst .answer .big b{color:#2f2a28;background:var(--sun);padding:0 6px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.cst .answer p{margin:0;color:var(--soft)}
+.cst .ribbon{position:relative;padding-top:26px}
+.cst .tape{position:absolute;left:0;right:0;top:0;height:22px;background:var(--sun);border-radius:4px;overflow:hidden}
+.cst .tape svg{width:100%;height:100%;display:block}
+.cst .cloth{height:46px;border-radius:6px;background:var(--mat);background-image:repeating-linear-gradient(45deg,rgba(241,201,79,.14) 0 6px,transparent 6px 12px);position:relative;overflow:hidden}
+.cst .cloth .use{position:absolute;inset:0 auto 0 0;background:rgba(241,201,79,.30);border-right:2px dashed var(--sun)}
+.cst .cloth .cap{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#fff;font-weight:700;font-size:14px}
+.cst .sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.cst .sec-h h2{font-size:26px}
+.cst .sec-h p{margin:0;color:var(--soft);font-size:14px}
+.cst .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.cst .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:10px;align-content:start}
+.cst .card .top{display:flex;gap:12px;align-items:center}
+.cst .cover{position:relative;display:block;margin:-16px -16px 2px;border-radius:18px 18px 0 0;overflow:hidden;aspect-ratio:3/2;background:var(--peach)}
+.cst .cover img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.cst .card:hover .cover img{transform:scale(1.03)}
+.cst .cover .pill{position:absolute;right:10px;top:10px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.cst .card{overflow:hidden}
+.cst .ic{--fill:#f9d978;--fill2:#f2b79a;--ink-ic:#2f2a28;flex:none;width:64px;height:64px;border-radius:50%;background:#fdf1e7;border:2px dashed #e3b99e;box-shadow:0 3px 8px rgba(60,35,20,.12);display:flex;align-items:center;justify-content:center}
+.cst .ic svg{width:48px;height:48px}
+.cst .card h3{font-size:17px;line-height:1.25}
+.cst .pills{display:flex;gap:6px;flex-wrap:wrap}
+.cst .pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.cst .pill.easy{background:var(--green);border-color:var(--green);color:#fff}
+.cst .pill.inter{background:var(--clay);border-color:var(--clay);color:#fff}
+.cst .need{font-size:14px;display:grid;gap:6px}
+.cst .meter{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.cst .meter i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.cst .card.short .meter i{background:var(--soft)}
+.cst .part{display:flex;justify-content:space-between;gap:8px;font-size:13.5px}
+.cst .part b{font-weight:600}
+.cst .ok{color:var(--acc-d);font-weight:600}
+.cst .no{color:var(--soft);font-weight:600}
+.cst .get{justify-self:start;font-weight:700;font-size:14px;text-decoration:none;background:var(--ink);color:var(--paper)!important;padding:8px 16px;border-radius:999px}
+.cst .card.short .get{background:transparent;color:var(--ink)!important;border:1.5px solid var(--ink)}
+.cst .grp{font-size:17px;margin:4px 0 -6px}
+.cst .tip{margin:0;font-size:14px;background:var(--acc-l);border-radius:12px;padding:10px 14px}
+.cst .gen{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cst .gc{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:6px;justify-items:center;text-align:center}
+.cst .gc .ic{width:68px;height:68px}
+.cst .gc .ic svg{width:50px;height:50px}
+.cst .gc b{font-size:14px;line-height:1.25}
+.cst .gc small{font-size:12.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.cst .tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--soft)}
+.cst .gc.yes .tag{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.cst .gc.tight .tag{background:var(--acc-l);border-color:var(--acc);color:var(--ink)}
+.cst .gc.nope{opacity:.62}
+.cst .modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:6px}
+.cst .mode{position:relative}
+.cst .mode input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.cst .mode span{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;min-height:64px;padding:8px 10px;border-radius:12px;font-weight:700;font-size:15px;line-height:1.25}
+.cst .mode small{font-weight:500;font-size:12.5px;color:var(--soft)}
+.cst .mode input:checked + span{background:var(--ink);color:var(--paper)}
+.cst .mode input:checked + span small{color:var(--paper);opacity:.75}
+.cst .mode input:focus-visible + span{outline:3px solid var(--sun);outline-offset:2px}
+.cst .dims{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cst .dims input{width:110px;font:600 24px var(--f-display);color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:8px 14px}
+.cst .dims input:focus{border-color:var(--acc);outline:none}
+.cst .dims .x{font:600 22px var(--f-display);color:var(--soft)}
+.cst .layout{background:var(--paper);border-radius:16px;padding:14px;display:grid;gap:8px;justify-items:center}
+.cst .layout svg{width:100%;max-width:520px;height:auto;display:block}
+.cst .layout p{margin:0;font-size:13.5px;color:var(--soft);text-align:center}
+.cst button.gc{font:inherit;color:inherit;cursor:pointer;transition:transform .15s,border-color .15s}
+.cst button.gc:hover{transform:translateY(-2px)}
+.cst button.gc.sel{border:2px solid var(--ink);box-shadow:0 6px 16px rgba(60,35,20,.15)}
+.cst .empty{background:var(--paper);border:2px dashed var(--line);border-radius:18px;padding:22px;color:var(--soft);text-align:center}
+.cst .guide{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:12px}
+.cst .gt{display:grid;grid-template-columns:110px 1fr 74px;gap:12px;align-items:center;font-size:14px}
+.cst .gt .bar{position:relative;height:14px;border-radius:99px;background:var(--bg);border:1px solid var(--line)}
+.cst .gt .bar i{position:absolute;top:-1px;bottom:-1px;border-radius:99px;background:var(--sun)}
+.cst .gt .bar s{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink)}
+.cst .gt .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--soft)}
+.cst .gt .y{font-weight:600}
+.cst .legend{font-size:13px;color:var(--soft);margin:0}
+.cst .faq{display:grid;gap:4px}
+.cst .faq details{border-bottom:2px dashed var(--line);padding:4px 0}
+.cst .faq summary{cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:18px;padding:12px 0;list-style:none}
+.cst .faq summary::-webkit-details-marker{display:none}
+.cst .faq summary:after{content:" +";color:var(--clay)}
+.cst .faq details[open] summary:after{content:" –"}
+.cst .faq p{margin:0 0 14px;color:var(--soft);max-width:65ch}
+.cst .note{font-size:13px;color:var(--soft);background:var(--sun-l);border-radius:12px;padding:10px 14px;margin:0}
+@media (max-width:620px){
+.cst .row2{grid-template-columns:1fr}
+.cst .mat-in{padding:18px}
+.cst .gt{grid-template-columns:88px 1fr 64px;gap:8px;font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+.cst *{transition:none!important}}
+
+body:has(.cst) .featured-sidebar{display:none!important}
+body:has(.cst) .site-main.main-with-sidebar{display:block!important;width:100%!important;max-width:1100px!important;margin:0 auto!important;float:none!important}
+body:has(.cst) .main-has-sidebar{width:100%!important;max-width:100%!important;float:none!important}
+body:has(.cst) .entry-header,body:has(.cst) .post-thumbnail{display:none!important}
+body:has(.cst) .entry-content{margin-top:0!important}
+.cst [hidden]{display:none!important}
+.cst p,.cst ul,.cst ol{margin:0}
+.cst input,.cst select{box-shadow:none;margin:0;max-width:100%}
+.cst .gc,.cst button.gc{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;border-radius:16px!important;padding:12px!important;text-transform:none!important;letter-spacing:0!important;font-weight:400!important;line-height:1.4!important;min-height:0!important;width:auto!important;box-shadow:none}
+.cst button.gc.sel{border:2px solid var(--ink)!important;box-shadow:0 6px 16px rgba(60,35,20,.15)}
+.cst button.gc:disabled{cursor:default}
+.cst a.get{text-decoration:none!important}
+.cst .chip,.cst .mode{margin:0}
+.cst .seo{display:grid;gap:14px;max-width:760px}
+.cst .seo h2{font-size:26px;margin-top:14px}
+.cst .seo p,.cst .seo li{color:var(--ink);line-height:1.7}
+.cst .seo ul,.cst .seo ol{padding-left:22px;display:grid;gap:6px}
+.cst .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.cst .tbl table{width:100%;border-collapse:collapse;font-size:14px;margin:0}
+.cst .tbl th,.cst .tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.cst .tbl th{background:var(--peach);font-weight:600}
+.cst .tbl tr:last-child td{border-bottom:0}
+</style>
+
+
+<div class="cst"><div class="wrap">
+  <header class="intro">
+    <p class="hand">fabric stash helper</p>
+    <h1>What can I make with my fabric?</h1>
+    <p>Type how much fabric you have, or the size of a leftover piece. See what you can make, how much each project needs, and which free CozySew patterns fit your fabric in your size.</p>
+  </header>
+
+  <form class="mat" id="f" autocomplete="off">
+    <div class="mat-in">
+      <div class="modes" role="radiogroup" aria-label="What do you have?">
+        <label class="mode"><input type="radio" name="mode" id="m-y" value="yard" checked><span>I have fabric<small>metres or yards from the shop</small></span></label>
+        <label class="mode"><input type="radio" name="mode" id="m-p" value="piece"><span>I have a small piece<small>a leftover or scrap</small></span></label>
+      </div>
+      <div id="pieceBox" class="q" hidden>
+        <span class="lbl" id="pdl">Size of your piece</span>
+        <div class="dims" role="group" aria-labelledby="pdl">
+          <input id="pw" type="number" inputmode="decimal" min="1" step="1" value="30" aria-label="Width">
+          <span class="x">×</span>
+          <input id="pl" type="number" inputmode="decimal" min="1" step="1" value="40" aria-label="Length">
+          <div class="chips" role="radiogroup" aria-label="Unit">
+            <label class="chip"><input type="radio" name="pu" id="pu-cm" value="cm" checked><span>cm</span></label>
+            <label class="chip"><input type="radio" name="pu" id="pu-in" value="in"><span>inches</span></label>
+          </div>
+        </div>
+        <small>Measure the usable part only, without frayed edges or holes.</small>
+      </div>
+      <div id="yardBox" style="display:grid;gap:20px">
+      <div class="q">
+        <label for="len">How much fabric do you have?</label>
+        <div class="len">
+          <input id="len" type="number" inputmode="decimal" min="0.1" step="0.1" value="2" aria-describedby="lenhelp">
+          <div class="chips" role="radiogroup" aria-label="Unit">
+            <label class="chip"><input type="radio" name="unit" id="u-m" value="m" checked><span>metres</span></label>
+            <label class="chip"><input type="radio" name="unit" id="u-yd" value="yd"><span>yards</span></label>
+          </div>
+        </div>
+        <small id="lenhelp">Measure along the selvage, the finished edge that does not fray.</small>
+      </div>
+
+      <div class="row2">
+        <div class="q">
+          <span class="lbl" id="wl">Fabric width</span>
+          <div class="chips" role="radiogroup" aria-labelledby="wl">
+            <label class="chip"><input type="radio" name="w" id="w150" value="150" checked><span>150 cm · 60″</span></label>
+            <label class="chip"><input type="radio" name="w" id="w115" value="115"><span>115 cm · 45″</span></label>
+          </div>
+          <small>Not sure? Quilting cotton is usually 110–115 cm, most garment fabric 140–150 cm.</small>
+        </div>
+        <div class="q">
+          <span class="lbl" id="tl">Fabric type</span>
+          <div class="chips" role="radiogroup" aria-labelledby="tl">
+            <label class="chip"><input type="radio" name="t" id="t-w" value="woven" checked><span>Woven</span></label>
+            <label class="chip"><input type="radio" name="t" id="t-k" value="knit"><span>Knit</span></label>
+            <label class="chip"><input type="radio" name="t" id="t-q" value="quilted"><span>Quilted</span></label>
+          </div>
+          <small id="thint">Cotton, linen, denim, corduroy, wool.</small>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="q">
+          <span class="lbl" id="pl">Sewing for</span>
+          <div class="chips" role="radiogroup" aria-labelledby="pl">
+            <label class="chip"><input type="radio" name="p" id="p-w" value="women" checked><span>Me / women</span></label>
+            <label class="chip"><input type="radio" name="p" id="p-k" value="kids"><span>Kids</span></label>
+          </div>
+        </div>
+        <div class="q">
+          <label for="size">Size</label>
+          <select id="size"></select>
+        </div>
+      </div>
+
+      <label class="check" for="nap"><input type="checkbox" id="nap"><span><b>Corduroy, velvet, plaid or a one-way print</b><br><small>All pieces must face the same way, so we add 10% to every amount.</small></span></label>
+      </div>
+    </div>
+  </form>
+
+  <section class="answer" aria-live="polite">
+    <p class="big" id="headline"></p>
+    <div class="ribbon" id="ribbonBox" aria-hidden="true">
+      <div class="tape"><svg id="tape" preserveAspectRatio="none"></svg></div>
+      <div class="cloth"><span class="use" id="use"></span><span class="cap" id="cap"></span></div>
+    </div>
+    <div class="layout" id="layoutBox" hidden><svg id="layout" role="img" aria-label="Cutting layout on your piece"></svg><p id="layoutCap"></p></div>
+    <p id="sub"></p>
+  </section>
+
+  <section class="wrap" style="gap:16px" id="pieceSec" hidden>
+    <div class="sec-h"><h2>What you can make from your piece</h2><p>Tap a project to see how to cut it.</p></div>
+    <div class="gen" id="pieceGrid"></div>
+  </section>
+
+  <section class="wrap" style="gap:16px" id="genSec">
+    <div class="sec-h"><h2 id="genTitle">What you can make</h2><p>Typical amounts for any pattern, in your size.</p></div>
+    <p class="tip" id="tip"></p>
+    <h3 class="grp">Clothes</h3>
+    <div class="gen" id="genClothes"></div>
+    <h3 class="grp">Small projects &amp; home</h3>
+    <div class="gen" id="genSmall"></div>
+  </section>
+
+  <section class="wrap" style="gap:16px" id="okSec">
+    <div class="sec-h"><h2>Free CozySew patterns that fit</h2><p id="okcount"></p></div>
+    <div class="grid" id="ok"></div>
+  </section>
+
+  <section class="wrap" style="gap:16px" id="almostSec">
+    <div class="sec-h"><h2>Almost there</h2><p>A little more fabric, a shorter length, or the narrower part of a set.</p></div>
+    <div class="grid" id="almost"></div>
+  </section>
+
+
+
+  <article class="seo">
+    <h2>How much fabric do you need for clothes?</h2>
+    <p>These are typical amounts for a simple version of each garment in a medium size (US 8–14). Smaller sizes need a little less, plus sizes up to 20% more, and long sleeves, full skirts or a one-way print add more. Your own pattern always has the final word.</p>
+    <div class="tbl"><table><thead><tr><th>Garment</th><th>150 cm / 60″ wide</th><th>115 cm / 45″ wide</th><th>Fabric</th></tr></thead><tbody><tr><td><strong>T-shirt</strong></td><td>1.2 m / 1⅜ yd</td><td>1.6 m / 1¾ yd</td><td>Knit</td></tr><tr><td><strong>Straight skirt</strong></td><td>0.8 m / ⅞ yd</td><td>1.3 m / 1½ yd</td><td>Woven</td></tr><tr><td><strong>Shorts</strong></td><td>0.9 m / 1 yd</td><td>1.3 m / 1½ yd</td><td>Woven or knit</td></tr><tr><td><strong>Blouse or shirt</strong></td><td>1.8 m / 2 yd</td><td>2.3 m / 2½ yd</td><td>Woven</td></tr><tr><td><strong>Pants</strong></td><td>1.7 m / 1⅞ yd</td><td>2.4 m / 2⅝ yd</td><td>Woven</td></tr><tr><td><strong>Hoodie or sweatshirt</strong></td><td>1.6 m / 1¾ yd</td><td>2.1 m / 2⅓ yd</td><td>Knit</td></tr><tr><td><strong>Short dress</strong></td><td>1.8 m / 2 yd</td><td>2.5 m / 2¾ yd</td><td>Woven</td></tr><tr><td><strong>Midi or long dress</strong></td><td>2.8 m / 3 yd</td><td>3.6 m / 4 yd</td><td>Woven</td></tr><tr><td><strong>Jacket</strong></td><td>2.0 m / 2¼ yd</td><td>2.6 m / 2⅞ yd</td><td>Woven or quilted</td></tr><tr><td><strong>Coat</strong></td><td>2.8 m / 3 yd</td><td>3.8 m / 4⅛ yd</td><td>Woven</td></tr></tbody></table></div>
+
+    <h2>What can you make with 1 yard of fabric?</h2>
+    <p>One yard is 91 cm (36″) long and as wide as the bolt, so a piece of 91 × 150 cm or 91 × 115 cm. That is enough for:</p>
+    <ul><li><strong>Clothes:</strong> a straight or pencil skirt in 150 cm fabric (our free <a href="/pencil-skirt-sewing-pattern/">pencil skirt pattern</a> needs 0.8 m in sizes 00–14), a child's T-shirt, leggings or a pair of kids' pants.</li><li><strong>Home:</strong> a cushion cover, two cloth napkins, a placemat or an apron.</li><li><strong>Gifts:</strong> a tote bag, a zipper pouch, drawstring gift bags, scrunchies and hair bows.</li></ul>
+
+    <h2>What can you make with 2 yards of fabric?</h2>
+    <p>Two yards (about 1.8 m) of 150 cm wide fabric is enough for most tops and blouses, shorts, a skirt or a pair of pants in small to medium sizes, and for a sweatshirt or a pullover hoodie in knit. A dress usually needs 2.5 to 3.5 yards, and a coat 3 yards or more. In 115 cm wide fabric, count about 30% more.</p>
+
+    <h2>What can you make with fabric scraps?</h2>
+    <p>Choose <em>I have a small piece</em> in the tool above and type its size: it shows what fits and how to cut it. Pieces of 25 × 25 cm (10 × 10″) make hair bows, coasters, bookmarks and lavender sachets. A 30 × 40 cm piece makes a small zipper pouch or a sleep mask, and 12 cm squares from many scraps turn into a patchwork cushion or a quilted bag.</p>
+
+    <h2>How to measure your fabric</h2>
+    <ol><li>Pre-wash, dry and press the fabric the way you will wash the finished garment.</li><li>Fold it in half lengthwise, selvage to selvage, and lay it flat.</li><li>Measure the length along the selvage and the full width from edge to edge.</li><li>For a scrap, measure only the usable part, without frayed edges, holes or fold marks.</li></ol>
+    <p>New to sewing? Learn <a href="/tutorials/how-to-take-body-measurements/">how to take your body measurements</a> and <a href="/tutorials/how-to-choose-your-sewing-pattern-size/">how to choose your pattern size</a>, then browse our <a href="/category/women/">free women's patterns</a> and <a href="/category/kids/">free kids' patterns</a>.</p>
+  </article>
+
+  <section class="wrap" style="gap:12px">
+    <h2 style="font-size:26px">Questions about fabric amounts</h2>
+    <div class="faq">
+      <details open><summary>Where do the amounts come from?</summary><p>"What you can make" uses typical amounts for a simple version of each item, in your size range. Every pattern is different, so always check your own pattern. The CozySew cards use the real yardage from each pattern's cutting layout.</p></details>
+      <details><summary>What can I make with 1 yard of fabric?</summary><p>With 1 yard (about 0.9 m) you can sew a tote bag, an apron, a cushion cover, a zipper pouch or a set of scrunchies. In 150 cm wide fabric it is also enough for a short straight skirt or a small child's top or pants.</p></details>
+      <details><summary>What does 1 yard of fabric cover?</summary><p>One yard is 36 inches (91.4 cm) long. Fabric is sold by length, so 1 yard of 60″ fabric covers 36 × 60 inches, about 91 × 150 cm, and 1 yard of 45″ fabric covers 36 × 45 inches, about 91 × 115 cm.</p></details>
+      <details><summary>What can I make with 2 yards of fabric?</summary><p>2 yards (about 1.8 m) of 150 cm wide fabric is enough for most tops, a skirt, shorts or a pair of pants in small to medium sizes. A dress usually needs 2.5 to 3.5 yards.</p></details>
+      <details><summary>What can I make with a 10x10 piece of fabric?</summary><p>A 10 × 10 inch (25 × 25 cm) piece is enough for a hair bow, two coasters, a fabric bookmark, a lavender sachet or four patchwork squares. Choose "I have a small piece" above to see exactly what fits yours.</p></details>
+      <details><summary>What can I do with fabric scraps?</summary><p>Pieces under 0.3 m are perfect for scrunchies, pouches, pockets, patchwork, hair bows and fabric gift tags. Keep scraps of the same fabric as your garment for patching later.</p></details>
+      <details><summary>Why does fabric width change so much?</summary><p>Wider fabric fits more pieces side by side, so you need less length. A pair of trousers can need 1.5 m of 150 cm fabric but 2.3 m of 115 cm fabric.</p></details>
+      <details><summary>Should I wash my fabric before measuring?</summary><p>Yes. Cotton and linen can shrink 3 to 5% in the first wash. Pre-wash, dry and press it, then measure what you really have.</p></details>
+      <details><summary>What if I am short by a few centimetres?</summary><p>Shorten the garment at the hem, cut facings or pocket bags from a different fabric, or turn a long-sleeve top into a short-sleeve one. The patterns marked "Almost there" are the ones where this usually works.</p></details>
+    </div>
+  </section>
+</div>
+</div>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where do the amounts come from?", "acceptedAnswer": {"@type": "Answer", "text": "\"What you can make\" uses typical amounts for a simple version of each item, in your size range. Every pattern is different, so always check your own pattern. The CozySew cards use the real yardage from each pattern's cutting layout."}}, {"@type": "Question", "name": "What can I make with 1 yard of fabric?", "acceptedAnswer": {"@type": "Answer", "text": "With 1 yard (about 0.9 m) you can sew a tote bag, an apron, a cushion cover, a zipper pouch or a set of scrunchies. In 150 cm wide fabric it is also enough for a short straight skirt or a small child's top or pants."}}, {"@type": "Question", "name": "What does 1 yard of fabric cover?", "acceptedAnswer": {"@type": "Answer", "text": "One yard is 36 inches (91.4 cm) long. Fabric is sold by length, so 1 yard of 60″ fabric covers 36 × 60 inches, about 91 × 150 cm, and 1 yard of 45″ fabric covers 36 × 45 inches, about 91 × 115 cm."}}, {"@type": "Question", "name": "What can I make with 2 yards of fabric?", "acceptedAnswer": {"@type": "Answer", "text": "2 yards (about 1.8 m) of 150 cm wide fabric is enough for most tops, a skirt, shorts or a pair of pants in small to medium sizes. A dress usually needs 2.5 to 3.5 yards."}}, {"@type": "Question", "name": "What can I make with a 10x10 piece of fabric?", "acceptedAnswer": {"@type": "Answer", "text": "A 10 × 10 inch (25 × 25 cm) piece is enough for a hair bow, two coasters, a fabric bookmark, a lavender sachet or four patchwork squares. Choose \"I have a small piece\" above to see exactly what fits yours."}}, {"@type": "Question", "name": "What can I do with fabric scraps?", "acceptedAnswer": {"@type": "Answer", "text": "Pieces under 0.3 m are perfect for scrunchies, pouches, pockets, patchwork, hair bows and fabric gift tags. Keep scraps of the same fabric as your garment for patching later."}}, {"@type": "Question", "name": "Why does fabric width change so much?", "acceptedAnswer": {"@type": "Answer", "text": "Wider fabric fits more pieces side by side, so you need less length. A pair of trousers can need 1.5 m of 150 cm fabric but 2.3 m of 115 cm fabric."}}, {"@type": "Question", "name": "Should I wash my fabric before measuring?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cotton and linen can shrink 3 to 5% in the first wash. Pre-wash, dry and press it, then measure what you really have."}}, {"@type": "Question", "name": "What if I am short by a few centimetres?", "acceptedAnswer": {"@type": "Answer", "text": "Shorten the garment at the hem, cut facings or pocket bags from a different fabric, or turn a long-sleeve top into a short-sleeve one. The patterns marked \"Almost there\" are the ones where this usually works."}}]}</script>
+<script>
+(function(){
+const IMG={"mandarin-collar-coat-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/mandarin-collar-coat-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "vintage-peplum-jacket-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/vintage-peplum-jacket-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "fitted-turtleneck-top-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/fitted-turtleneck-top-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "bishop-sleeve-blouse-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/bishop-sleeve-blouse-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "barrel-leg-pants-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/barrel-leg-pants-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "zip-up-bomber-sweatshirt-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/zip-up-bomber-sweatshirt-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "victorian-nightgown-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/victorian-nightgown-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "high-waisted-barrel-trousers-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/high-waisted-barrel-trousers-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "corduroy-pinafore-dress-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/corduroy-pinafore-dress-free-sewing-pattern-pdf-xxs-4xl-v2-768x512.jpg", "double-breasted-coat-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/double-breasted-coat-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "quilted-patchwork-jacket-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/quilted-patchwork-jacket-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "quilted-vest-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/10/quilted-vest-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "christmas-pajama-set-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/christmas-pajama-set-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "girls-christmas-pajama-set-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/girls-christmas-pajama-set-free-sewing-pattern-pdf-2-16-768x512.jpg", "hoodie-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/pullover-hoodie-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "kids-zip-up-hoodie-sweatpants-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/kids-zip-up-hoodie-sweatpants-free-sewing-pattern-pdf-2-16-768x512.jpg", "fit-and-flare-coat-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/fit-and-flare-coat-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg", "kids-sweatshirt-jogger-pants-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/kids-sweatshirt-and-jogger-pants-free-sewing-pattern-pdf-2-16-768x512.jpg", "pencil-skirt-sewing-pattern": "https://cozysewpatterns.com/wp-content/uploads/2026/11/classic-pencil-skirt-free-sewing-pattern-pdf-xxs-4xl-768x512.jpg"};
+const SITE="/";
+const WG=[{v:0,l:"Sizes 00–6 · XXS to S"},{v:1,l:"Sizes 8–14 · M to L"},{v:2,l:"Sizes 16–22 · XL to 4XL"}];
+const KG=[{v:0,l:"Kids sizes 2–6"},{v:1,l:"Kids sizes 7–10"},{v:2,l:"Kids sizes 12–16"}];
+/* amounts in metres: [150 cm wide per size group], [115 cm wide per size group]; null = not given for that width */
+const P=[
+ {n:"Pencil Skirt",s:"pencil-skirt-sewing-pattern",g:"skirt",who:"women",lv:"Easy",parts:[{n:"Skirt",t:"woven",a:[0.8,0.8,1.4],b:[1.0,1.4,1.4]}]},
+ {n:"Fitted Turtleneck Top",s:"fitted-turtleneck-top-sewing-pattern",g:"top",who:"women",lv:"Easy",parts:[{n:"Top",t:"knit",a:[1.3,1.4,1.6],b:[1.5,1.6,1.7]}]},
+ {n:"Bishop Sleeve Blouse",s:"bishop-sleeve-blouse-sewing-pattern",g:"top",who:"women",lv:"Easy",parts:[{n:"Blouse",t:"woven",a:[1.8,2.1,2.2],b:[2.2,2.6,3.0]}]},
+ {n:"Barrel Leg Pants",s:"barrel-leg-pants-sewing-pattern",g:"pants",who:"women",lv:"Easy",parts:[{n:"Pants",t:"woven",a:[1.5,2.1,2.3],b:[2.3,2.3,2.5]}]},
+ {n:"High-Waisted Barrel Trousers",s:"high-waisted-barrel-trousers-sewing-pattern",g:"pants",who:"women",lv:"Easy",parts:[{n:"Trousers",t:"woven",a:[1.5,2.1,2.2],b:[2.3,2.3,2.5]}]},
+ {n:"Zip-Up Bomber Sweatshirt",s:"zip-up-bomber-sweatshirt-sewing-pattern",g:"hoodie",who:"women",lv:"Easy",parts:[{n:"Sweatshirt",t:"knit",a:[1.2,1.2,1.3],b:[1.4,1.5,1.9]}]},
+ {n:"Pullover Hoodie",s:"hoodie-sewing-pattern",g:"hoodie",who:"women",lv:"Easy",parts:[{n:"Hoodie",t:"knit",a:[1.5,1.6,1.7],b:[1.9,2.1,2.4]}]},
+ {n:"Victorian Nightgown",s:"victorian-nightgown-sewing-pattern",g:"dress",who:"women",lv:"Easy",parts:[{n:"Nightgown",t:"woven",a:[2.1,2.3,3.8],b:[3.8,4.0,4.2]}]},
+ {n:"Corduroy Pinafore Dress",s:"corduroy-pinafore-dress-sewing-pattern",g:"dress",who:"women",lv:"Easy",napIn:true,parts:[{n:"Dress",t:"woven",a:[2.0,2.2,2.3],b:[2.3,2.3,2.6]}]},
+ {n:"Christmas Pajama Set",s:"christmas-pajama-set-sewing-pattern",g:"pajama",who:"women",lv:"Easy",parts:[{n:"Shirt",t:"woven",a:[1.9,2.1,2.3],b:[2.5,2.5,3.0]},{n:"Pants",t:"knit",a:[1.3,2.3,2.4],b:[2.4,2.4,null]}]},
+ {n:"Quilted Button Vest",s:"quilted-vest-sewing-pattern",g:"vest",who:"women",lv:"Easy",parts:[{n:"Vest",t:"quilted",a:[1.2,1.2,1.3],b:[1.4,1.5,1.8]}]},
+ {n:"Quilted Patchwork Jacket",s:"quilted-patchwork-jacket-sewing-pattern",g:"jacket",who:"women",lv:"Easy",parts:[{n:"Jacket",t:"quilted",a:[1.8,2.1,2.3],b:[2.3,2.4,2.7]}]},
+ {n:"Vintage Peplum Jacket",s:"vintage-peplum-jacket-sewing-pattern",g:"jacket",who:"women",lv:"Intermediate",parts:[{n:"Jacket",t:"woven",a:[1.9,2.1,2.2],b:[2.2,2.6,2.9]}]},
+ {n:"Mandarin Collar Coat",s:"mandarin-collar-coat-sewing-pattern",g:"coat",who:"women",lv:"Intermediate",parts:[{n:"Coat",t:"woven",a:[2.75,2.75,2.75],b:[null,null,null]}]},
+ {n:"Double-Breasted Coat",s:"double-breasted-coat-sewing-pattern",g:"coat",who:"women",lv:"Intermediate",parts:[{n:"Coat",t:"woven",a:[2.5,2.6,3.0],b:[3.0,3.3,3.8]}]},
+ {n:"Fit & Flare Coat",s:"fit-and-flare-coat-sewing-pattern",g:"coat",who:"women",lv:"Intermediate",parts:[{n:"Coat",t:"woven",a:[3.1,3.4,3.9],b:[3.9,4.2,4.8]}]},
+ {n:"Girls Christmas Pajama Set",s:"girls-christmas-pajama-set-sewing-pattern",g:"pajama",who:"kids",parts:[{n:"Shirt",t:"woven",a:[1.0,1.3,1.6],b:[1.3,1.4,1.8]},{n:"Pants",t:"knit",a:[0.9,1.1,1.3],b:[0.9,1.1,1.3]}]},
+ {n:"Kids Zip-Up Hoodie & Sweatpants",s:"kids-zip-up-hoodie-sweatpants-sewing-pattern",g:"hoodie",who:"kids",lv:"Easy",parts:[{n:"Hoodie",t:"knit",a:[1.0,1.2,1.8],b:[1.4,1.6,2.3]},{n:"Sweatpants",t:"knit",a:[0.9,1.1,1.3],b:[0.9,1.1,1.3]}]},
+ {n:"Kids Sweatshirt & Joggers",s:"kids-sweatshirt-jogger-pants-sewing-pattern",g:"hoodie",who:"kids",lv:"Easy",parts:[{n:"Sweatshirt",t:"knit",a:[0.6,1.1,1.6],b:[0.9,1.3,2.0]},{n:"Joggers",t:"knit",a:[0.9,1.1,1.3],b:[0.9,1.1,1.3]}]}
+];
+/* typical amounts (m) for a simple version, medium size: [150 cm wide, 115 cm wide]; types it suits */
+const GEN={
+ women:[
+  {n:"T-shirt",i:"tee",a:[1.2,1.6],t:["knit"]},
+  {n:"Hoodie or sweatshirt",i:"hoodie",a:[1.6,2.1],t:["knit"]},
+  {n:"Leggings",i:"pants",a:[1.0,1.3],t:["knit"]},
+  {n:"Knit dress",i:"dress",a:[1.8,2.4],t:["knit"]},
+  {n:"Straight skirt",i:"skirt",a:[0.8,1.3],t:["woven"]},
+  {n:"Circle skirt",i:"skirt",a:[2.0,3.0],t:["woven","knit"]},
+  {n:"Shorts",i:"shorts",a:[0.9,1.3],t:["woven","knit"]},
+  {n:"Blouse or shirt",i:"top",a:[1.8,2.3],t:["woven"]},
+  {n:"Pants",i:"pants",a:[1.7,2.4],t:["woven"]},
+  {n:"Short dress",i:"dress",a:[1.8,2.5],t:["woven"]},
+  {n:"Midi or long dress",i:"dress",a:[2.8,3.6],t:["woven"]},
+  {n:"Pajama set",i:"pajama",a:[3.2,4.2],t:["woven"]},
+  {n:"Vest",i:"vest",a:[1.1,1.4],t:["quilted","woven"]},
+  {n:"Jacket",i:"jacket",a:[2.0,2.6],t:["quilted","woven"]},
+  {n:"Coat",i:"coat",a:[2.8,3.8],t:["woven","quilted"]}],
+ kids:[
+  {n:"Kids T-shirt",i:"tee",a:[0.6,0.8],t:["knit"]},
+  {n:"Kids leggings",i:"pants",a:[0.6,0.8],t:["knit"]},
+  {n:"Kids hoodie",i:"hoodie",a:[1.0,1.3],t:["knit"]},
+  {n:"Kids skirt",i:"skirt",a:[0.5,0.8],t:["woven","knit"]},
+  {n:"Kids shorts",i:"shorts",a:[0.5,0.7],t:["woven","knit"]},
+  {n:"Kids pants",i:"pants",a:[0.8,1.0],t:["woven","knit"]},
+  {n:"Kids dress",i:"dress",a:[1.0,1.4],t:["woven","knit"]},
+  {n:"Kids pajama set",i:"pajama",a:[1.7,2.2],t:["woven","knit"]},
+  {n:"Kids vest",i:"vest",a:[0.6,0.8],t:["quilted","woven"]},
+  {n:"Kids jacket",i:"jacket",a:[1.1,1.4],t:["quilted","woven"]}],
+ small:[
+  {n:"Scrunchies (×3)",i:"scrunchie",a:[0.15,0.15],t:["woven","knit"]},
+  {n:"Zipper pouch",i:"pouch",a:[0.25,0.3],t:["woven","quilted"]},
+  {n:"Cushion cover",i:"cushion",a:[0.5,0.5],t:["woven","quilted"]},
+  {n:"Tote bag",i:"tote",a:[0.5,0.7],t:["woven","quilted"]},
+  {n:"Apron",i:"apron",a:[0.9,1.0],t:["woven"]}]
+};
+/* small-piece projects: cutting rectangle (cm) for one item, all layers included */
+const SCRAP=[
+ {n:"Patchwork squares",i:"squares",w:12,h:12,note:"10 cm finished"},
+ {n:"Fabric bookmark",i:"tag",w:8,h:22},
+ {n:"Hair bow",i:"bow",w:25,h:12},
+ {n:"Coaster",i:"coaster",w:12,h:24},
+ {n:"Lavender sachet",i:"sachet",w:12,h:24},
+ {n:"Scrunchie",i:"scrunchie",w:50,h:10},
+ {n:"Sleep eye mask",i:"mask",w:22,h:24},
+ {n:"Pot holder",i:"potholder",w:22,h:44},
+ {n:"Zipper pouch",i:"pouch",w:25,h:36},
+ {n:"Baby bib",i:"bib",w:25,h:60},
+ {n:"Drawstring gift bag",i:"bag",w:25,h:60},
+ {n:"Cloth napkin",i:"napkin",w:45,h:45},
+ {n:"Placemat",i:"placemat",w:35,h:100},
+ {n:"Small tote bag",i:"tote",w:40,h:90},
+ {n:"Cushion cover (40 cm)",i:"cushion",w:42,h:102}
+];
+let selScrap=null;
+const SF={women:[0.9,1,1.2],kids:[0.75,1,1.3]};
+const TIPS={woven:"Woven fabric doesn't stretch: great for skirts, shirts, pants, dresses, jackets and bags.",knit:"Knit fabric stretches: use it for T-shirts, hoodies, leggings and comfy pajama pants. Avoid patterns made for zips and fitted wovens.",quilted:"Quilted fabric is thick and warm: perfect for vests, jackets, bags and cushions, not for fitted or gathered clothes."};
+const GT={skirt:"Skirt",top:"Top or blouse",pants:"Pants",hoodie:"Sweatshirt",dress:"Dress",pajama:"Pajama piece",vest:"Vest",jacket:"Jacket",coat:"Coat"};
+/* flat garment stickers: soft fill, ink outline, dashed topstitching, small details */
+const F='fill="var(--fill)"',F2='fill="var(--fill2)"',ST='stroke-dasharray="1.6 1.8" stroke-width="1" fill="none"';
+const ICON={
+ skirt:'<path '+F+' d="M17 9h14l7 30H10z"/><rect '+F2+' x="16" y="6" width="16" height="5" rx="1.5"/><circle cx="29" cy="8.5" r="1" fill="var(--ink-ic)"/><path '+ST+' d="M13 36.5h22"/><path d="M24 11v26" '+ST+'/>',
+ top:'<path '+F+' d="M18 8l-9 4.5 3.5 8.5 4-2v19h15v-19l4 2 3.5-8.5L30 8c-1.2 3-3.5 4.5-6 4.5S19.2 11 18 8z"/><path '+ST+' d="M17 35.5h14"/><path '+ST+' d="M12 18.5l4-1.8M36 18.5l-4-1.8"/>',
+ pants:'<path '+F+' d="M14 8h20l2.5 32h-8L24 18l-4.5 22h-8z"/><rect '+F2+' x="14" y="7" width="20" height="5" rx="1"/><path '+ST+' d="M24 12v7"/><path '+ST+' d="M17 14c2 3 4 3 5 2M31 14c-2 3-4 3-5 2"/>',
+ hoodie:'<path '+F+' d="M17 12c0-6 14-6 14 0l8 5-3.5 8.5-3.5-2V40H16V23.5l-3.5 2L9 17z"/><path '+F2+' d="M18 30h12v6H18z"/><path d="M21 13v6M27 13v6" fill="none"/><path '+ST+' d="M16 37.5h16"/>',
+ dress:'<path '+F+' d="M19 6v6l-3 7-6 21h28l-6-21-3-7V6"/><path '+F2+' d="M15.5 19h17v3h-17z"/><path '+ST+' d="M12.5 37.5h23"/><path d="M19 6c2 3 8 3 10 0" fill="none"/>',
+ pajama:'<path '+F+' d="M10 9l6-2.5h5l3 3.5 3-3.5h5l6 2.5-2.5 8-3.5-1.5V30H16V15.5L12.5 17z"/><path d="M24 10v20" fill="none"/><circle cx="21.5" cy="15" r="1" fill="var(--ink-ic)"/><circle cx="21.5" cy="21" r="1" fill="var(--ink-ic)"/><circle cx="21.5" cy="27" r="1" fill="var(--ink-ic)"/><path '+F2+' d="M16 31h16l1 10h-6l-3-6-3 6h-6z"/>',
+ vest:'<path '+F+' d="M17 6l7 15 7-15 5 3.5-1.5 30.5H13.5L12 9.5z"/><path d="M24 21v19" fill="none"/><circle cx="26" cy="26" r="1" fill="var(--ink-ic)"/><circle cx="26" cy="32" r="1" fill="var(--ink-ic)"/><path '+F2+' d="M15 30h6v5h-6zM27 30h6v5h-6z"/>',
+ jacket:'<path '+F+' d="M17 6l7 10 7-10 9 6-4 12-3.5-2V40H15.5V22L12 24 8 12z"/><path d="M24 16v24" fill="none"/><path '+F2+' d="M17 6l7 10-4 2zM31 6l-7 10 4 2z"/><path '+ST+' d="M16 37.5h16"/>',
+ tote:'<path '+F+' d="M10 17h28l-2.5 23h-23z"/><path d="M17 17c0-9 14-9 14 0" fill="none"/><path '+ST+' d="M12.5 21h23"/>',
+ pouch:'<rect '+F+' x="8" y="14" width="32" height="22" rx="4"/><path '+F2+' d="M8 18h32"/><path d="M33 14v-3h4" fill="none"/><path '+ST+' d="M11 32h26"/>',
+ scrunchie:'<circle '+F+' cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="6" fill="#fdf1e7"/><path '+ST+' d="M24 10v4M24 34v4M10 24h4M34 24h4M14 14l3 3M31 31l3 3M34 14l-3 3M14 34l3-3"/>',
+ apron:'<path '+F+' d="M17 8h14v8l6 2-2 22H13l-2-22 6-2z"/><path '+F2+' d="M18 27h12v7H18z"/><path d="M17 8c-3-4-1-4 0-4M31 8c3-4 1-4 0-4M11 18H5M37 18h6" fill="none"/>',
+ cushion:'<path '+F+' d="M9 11c5 2 25 2 30 0-2 5-2 21 0 26-5-2-25-2-30 0 2-5 2-21 0-26z"/><path '+ST+' d="M14 16c4 1 16 1 20 0M14 32c4-1 16-1 20 0"/>',
+ shorts:'<path '+F+' d="M13 10h22l3 20h-10l-4-11-4 11H10z"/><rect '+F2+' x="13" y="9" width="22" height="5" rx="1"/><path '+ST+' d="M11 27h9M28 27h9"/>',
+ tee:'<path '+F+' d="M18 8l-9 5 3.5 7 4-1.5V39h15V18.5l4 1.5 3.5-7-9-5c-1.2 2.5-3.5 3.5-6 3.5S19.2 10.5 18 8z"/><path '+ST+' d="M17 36h14"/>',
+ bow:'<path '+F+' d="M24 24L8 14v20zM24 24l16-10v20z"/><rect '+F2+' x="20" y="19" width="8" height="10" rx="2"/>',
+ coaster:'<circle '+F2+' cx="28" cy="28" r="13"/><circle '+F+' cx="20" cy="20" r="13"/><circle '+ST+' cx="20" cy="20" r="9"/>',
+ tag:'<path '+F+' d="M15 7h18v33l-9-6-9 6z"/><circle cx="24" cy="14" r="2" fill="#fdf1e7"/><path '+ST+' d="M18 21h12M18 26h12"/>',
+ potholder:'<rect '+F+' x="10" y="12" width="28" height="28" rx="4"/><path d="M21 12c0-6 6-6 6 0" fill="none"/><path '+ST+' d="M10 26h28M24 12v28"/>',
+ sachet:'<path '+F+' d="M13 19h22l2 21H11z"/><path '+F2+' d="M13 19h22v4H13z"/><path d="M18 19c0-6 4-9 6-9s6 3 6 9" fill="none"/>',
+ napkin:'<path '+F+' d="M8 10h32v30H8z"/><path '+F2+' d="M8 10l32 30H8z"/><path '+ST+' d="M11 13h26v24"/>',
+ squares:'<rect '+F+' x="8" y="8" width="16" height="16"/><rect '+F2+' x="24" y="8" width="16" height="16"/><rect '+F2+' x="8" y="24" width="16" height="16"/><rect '+F+' x="24" y="24" width="16" height="16"/>',
+ mask:'<path '+F+' d="M6 19c8-6 28-6 36 0 0 11-8 13-12 9-3-3-9-3-12 0-4 4-12 2-12-9z"/><path d="M6 20H2M42 20h4" fill="none"/>',
+ bib:'<path '+F+' d="M15 8c0 9 18 9 18 0 6 4 9 12 7 20-2 11-30 11-32 0-2-8 1-16 7-20z"/><path '+ST+' d="M15 31c4 4 14 4 18 0"/>',
+ bag:'<path '+F+' d="M12 17h24l-2 23H14z"/><path '+F2+' d="M12 17h24v5H12z"/><path d="M20 19c-3-8-8-7-6 1M28 19c3-8 8-7 6 1" fill="none"/>',
+ placemat:'<rect '+F+' x="5" y="12" width="38" height="24" rx="3"/><path '+ST+' d="M8 15h32v18H8z"/>',
+ coat:'<path '+F+' d="M17 5l7 10 7-10 9 6-4 13-3.5-2v19.5h-17V22L12 24 8 11z"/><path d="M24 15v26" fill="none"/><path '+F2+' d="M17 5l7 10-4 3zM31 5l-7 10 4 3z"/><circle cx="21" cy="23" r="1.1" fill="var(--ink-ic)"/><circle cx="21" cy="30" r="1.1" fill="var(--ink-ic)"/><circle cx="27" cy="23" r="1.1" fill="var(--ink-ic)"/><circle cx="27" cy="30" r="1.1" fill="var(--ink-ic)"/>'
+};
+const $=id=>document.getElementById(id);
+const f=$("f");
+const val=name=>(f.querySelector('input[name="'+name+'"]:checked')||{}).value;
+const M2Y=1.0936;
+const fmt=(m,u)=>u==="yd"?(m*M2Y).toFixed(1)+" yd":(+m).toFixed(m<1?2:1).replace(/\.?0+$/,"")+" m";
+function icon(g){return '<svg viewBox="0 0 48 48" stroke="var(--ink-ic)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'+ICON[g]+'</svg>';}
+
+function fillSizes(){
+  const who=val("p"),s=$("size"),keep=s.value;
+  s.innerHTML=(who==="kids"?KG:WG).map(o=>'<option value="'+o.v+'">'+o.l+'</option>').join("");
+  s.value=keep||"1"; if(!s.value)s.value="1";
+}
+function drawTape(maxM){
+  const svg=$("tape"),w=600,h=22;svg.setAttribute("viewBox","0 0 "+w+" "+h);
+  let out="";const step=maxM<=3?0.1:0.25;
+  for(let x=0;x<=maxM+1e-9;x+=step){
+    const px=x/maxM*w,major=Math.abs(x-Math.round(x))<1e-6,half=Math.abs(x*2-Math.round(x*2))<1e-6;
+    out+='<line x1="'+px+'" x2="'+px+'" y1="0" y2="'+(major?14:half?9:5)+'" stroke="#2f2a28" stroke-width="'+(major?1.6:1)+'"/>';
+    if(major&&x>0&&x<maxM-0.05)out+='<text x="'+(px+3)+'" y="19" font-size="10" font-family="Poppins,sans-serif" font-weight="600" fill="#2f2a28">'+Math.round(x)+' m</text>';
+  }
+  svg.innerHTML=out;
+}
+
+function piece(){
+  const pu=val("pu"), k=pu==="in"?2.54:1;
+  const W=(parseFloat($("pw").value)||0)*k, L=(parseFloat($("pl").value)||0)*k;
+  const d=x=>pu==="in"?(x/2.54).toFixed(x/2.54<10?1:0).replace(/\.0$/,"")+"″":Math.round(x)+" cm";
+  const fit=(a,b)=>{const n1=Math.floor(W/a)*Math.floor(L/b),n2=Math.floor(W/b)*Math.floor(L/a);return n1>=n2?{n:n1,a,b}:{n:n2,a:b,b:a};};
+  const items=SCRAP.map(it=>({it,f:fit(it.w,it.h)}));
+  const yes=items.filter(x=>x.f.n>0).sort((x,y)=>y.it.w*y.it.h-x.it.w*x.it.h);
+  const no=items.filter(x=>x.f.n===0).sort((x,y)=>x.it.w*x.it.h-y.it.w*y.it.h);
+  if(!selScrap||!yes.some(x=>x.it.n===selScrap)) selScrap=yes.length?yes[0].it.n:null;
+  const cardH=(x,ok)=>{const it=x.it,need=d(it.w)+" × "+d(it.h);
+    return '<button type="button" class="gc '+(ok?'yes':'nope')+(ok&&it.n===selScrap?' sel':'')+'" data-s="'+it.n+'" '+(ok?'':'disabled')+'><span class="ic">'+icon(it.i)+'</span><b>'+it.n+'</b><small>'+(it.note?it.note+' · ':'')+'cut '+need+'</small><span class="tag">'+(ok?'✓ You can make '+x.f.n:'Piece too small')+'</span></button>';};
+  $("pieceGrid").innerHTML=yes.map(x=>cardH(x,true)).join("")+no.map(x=>cardH(x,false)).join("");
+  const size=d(W)+" × "+d(L);
+  $("headline").innerHTML=W>0&&L>0?'Your <b>'+size+'</b> piece can make <b>'+yes.length+' '+(yes.length===1?'project':'projects')+'</b>.':'Type the size of your piece to see what fits.';
+  const sel=yes.find(x=>x.it.n===selScrap);
+  $("layoutBox").hidden=!sel;
+  if(sel){drawLayout(W,L,sel,d);$("sub").textContent=yes.length>1?'Tap another project below to see its cutting layout.':'';}
+  else $("sub").textContent='Too small for these projects. Keep it for patching, appliqué or a fabric gift tag.';
+}
+function drawLayout(W,L,x,d){
+  const M=Math.max(W,L), s=M/100, pad=M*0.11;
+  const a=x.f.a,b=x.f.b,cols=Math.floor(W/a),rows=Math.floor(L/b),ox=pad,oy=pad*0.8;
+  let r='<rect x="'+ox+'" y="'+oy+'" width="'+W+'" height="'+L+'" rx="'+(1.2*s)+'" fill="var(--peach)" stroke="var(--clay)" stroke-width="'+(0.5*s)+'" stroke-dasharray="'+(1.6*s)+' '+(1.2*s)+'"/>';
+  for(let c=0;c<cols;c++)for(let q=0;q<rows;q++){const px=ox+c*a,py=oy+q*b;
+    r+='<rect x="'+(px+0.4*s)+'" y="'+(py+0.4*s)+'" width="'+(a-0.8*s)+'" height="'+(b-0.8*s)+'" rx="'+(0.8*s)+'" fill="var(--sun)" stroke="#2f2a28" stroke-width="'+(0.35*s)+'"/>';
+    if(c===0&&q===0) r+='<text x="'+(px+a/2)+'" y="'+(py+b/2)+'" text-anchor="middle" dominant-baseline="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="'+Math.min(a/((d(a)+' × '+d(b)).length*0.62),b/3,5*s)+'" fill="#2f2a28">'+d(a)+' × '+d(b)+'</text>';}
+  const fs=3.4*s;
+  r+='<text x="'+(ox+W/2)+'" y="'+(oy-fs*0.7)+'" text-anchor="middle" font-family="Poppins,sans-serif" font-size="'+fs+'" font-weight="600" fill="var(--soft)">'+d(W)+'</text>';
+  r+='<text x="'+(ox-fs*0.8)+'" y="'+(oy+L/2)+'" text-anchor="middle" font-family="Poppins,sans-serif" font-size="'+fs+'" font-weight="600" fill="var(--soft)" transform="rotate(-90 '+(ox-fs*0.8)+' '+(oy+L/2)+')">'+d(L)+'</text>';
+  const svg=$("layout");svg.setAttribute("viewBox","0 0 "+(W+pad*1.5)+" "+(L+pad*1.3));svg.style.maxHeight="420px";svg.innerHTML=r;
+  $("layoutCap").textContent=x.it.n+': '+x.f.n+' '+(x.f.n===1?'piece':'pieces')+' of '+d(a)+' × '+d(b)+(x.it.note?' ('+x.it.note+')':'')+'.';
+}
+
+function run(){
+  const pm=val("mode")==="piece";
+  $("pieceBox").hidden=!pm; $("yardBox").hidden=pm; $("ribbonBox").hidden=pm; $("layoutBox").hidden=!pm;
+  $("pieceSec").hidden=!pm; $("genSec").hidden=pm; $("okSec").hidden=pm;
+  if(pm){ $("almostSec").hidden=true; piece(); return; }
+  const unit=val("unit");
+  let have=parseFloat($("len").value);
+  if(!(have>0)) have=0;
+  const haveM=unit==="yd"?have/M2Y:have;
+  const wi=val("w")==="150"?"a":"b";
+  const type=val("t"), who=val("p"), gi=+$("size").value, nap=$("nap").checked;
+  $("thint").textContent=type==="knit"?"Jersey, sweatshirt fleece, french terry, rib.":type==="quilted"?"Pre-quilted fabric or a quilt you are upcycling.":"Cotton, linen, denim, corduroy, wool.";
+  const sizeLabel=(who==="kids"?KG:WG)[gi].l.replace(/ ·.*/,"").toLowerCase();
+
+  const ok=[],almost=[];
+  P.filter(p=>p.who===who).forEach(p=>{
+    const res=p.parts.filter(pt=>pt.t===type).map(pt=>{
+      let need=pt[wi][gi]; if(need==null) return {n:pt.n,need:null};
+      if(nap&&!p.napIn) need=Math.round(need*1.1*10)/10;
+      return {n:pt.n,need,fits:haveM>=need-1e-9};
+    }).filter(r=>r.need!=null);
+    if(!res.length) return;
+    const anyFit=res.some(r=>r.fits), minNeed=Math.min(...res.map(r=>r.need));
+    const item={p,res,minNeed};
+    if(anyFit) ok.push(item); else if(minNeed-haveM<=0.4) almost.push(item);
+  });
+  ok.sort((x,y)=>y.minNeed-x.minNeed);
+  almost.sort((x,y)=>x.minNeed-y.minNeed);
+
+  const typeWord=type==="knit"?"knit":type==="quilted"?"quilted":"woven";
+  const widthTxt=val("w")==="150"?"150 cm":"115 cm";
+  const ideas=general(haveM,unit,wi,type,who,gi,nap);
+  $("headline").innerHTML=have>0
+    ? 'With <b>'+fmt(haveM,unit)+'</b> of '+widthTxt+' '+typeWord+' fabric you can make <b>'+ideas+' '+(ideas===1?'thing':'things')+'</b>'+(ok.length?', including <b>'+ok.length+' free CozySew '+(ok.length===1?'pattern':'patterns')+'</b> in '+sizeLabel+'.':'.')
+    : 'Type how much fabric you have to see what fits.';
+  const best=ok[0];
+  $("sub").textContent='Try the other width, or check the "Almost there" list below.';
+  if(best)$("sub").textContent='Best use of your fabric: '+best.p.n+'. It needs '+fmt(best.minNeed,unit)+' and leaves '+fmt(Math.max(0,haveM-best.minNeed),unit)+' over.';
+
+  const maxM=Math.max(1,Math.ceil(Math.max(haveM,best?best.minNeed:0)));
+  drawTape(maxM);
+  $("use").style.width=best?Math.min(100,best.minNeed/maxM*100)+"%":"0%";
+  document.querySelector(".cloth").style.width=Math.min(100,haveM/maxM*100)+"%";
+  $("cap").textContent=fmt(haveM,unit);
+
+  const card=(it,short)=>{
+    const p=it.p;
+    const lv=p.lv?'<span class="pill '+(p.lv==="Easy"?"easy":"inter")+'">'+p.lv+'</span>':"";
+    const rows=it.res.map(r=>{
+      const pct=Math.min(100,r.need/Math.max(haveM,r.need)*100);
+      const st=r.fits?'<span class="ok">✓ '+fmt(haveM-r.need,unit)+' left</span>':'<span class="no">'+fmt(r.need-haveM,unit)+' short</span>';
+      return '<div class="need"><div class="part"><span><b>'+(it.res.length>1||p.parts.length>1?r.n+': ':'')+'</b>needs '+fmt(r.need,unit)+'</span>'+st+'</div><div class="meter"><i style="width:'+pct+'%"></i></div></div>';
+    }).join("");
+    const setNote=p.parts.length>it.res.length?'<small style="color:var(--soft);font-size:12.5px">Only the '+typeWord+' part of this set is counted.</small>':'';
+    const url=SITE+p.s+'/';
+    return '<article class="card'+(short?' short':'')+'"><a class="cover" href="'+url+'" target="_blank" rel="noopener"><img src="'+IMG[p.s]+'" alt="'+p.n+' free sewing pattern cover" loading="lazy" width="540" height="360">'+lv+'</a><h3>'+p.n+'</h3>'+rows+setNote+'<a class="get" href="'+SITE+p.s+'/" target="_blank" rel="noopener">Get the free pattern →</a></article>';
+  };
+  $("ok").innerHTML=ok.length?ok.map(i=>card(i,false)).join(""):'<div class="empty">Nothing fits fully in this fabric yet. Look at "Almost there", or switch the width.</div>';
+  $("okcount").textContent=ok.length?ok.length+" free "+(ok.length===1?"pattern":"patterns"):"";
+  $("almost").innerHTML=almost.map(i=>card(i,true)).join("");
+  $("almostSec").hidden=!almost.length;
+
+}
+
+function general(haveM,unit,wi,type,who,gi,nap){
+  const idx=wi==="a"?0:1, sf=SF[who][gi];
+  const calc=(it,scale)=>{let v=it.a[idx]*(scale?sf:1); if(nap) v*=1.1; return Math.round(v*20)/20;};
+  const card=(it,need)=>{
+    const diff=haveM-need, cls=diff>=need*0.1?"yes":diff>=0?"tight":"nope";
+    const tag=cls==="yes"?"✓ You can":cls==="tight"?"Just enough":"+"+fmt(-diff,unit)+" needed";
+    return {need,cls,html:'<div class="gc '+cls+'"><span class="ic">'+icon(it.i)+'</span><b>'+it.n+'</b><small>about '+fmt(need,unit)+'</small><span class="tag">'+tag+'</span></div>'};
+  };
+  const order={yes:0,tight:1,nope:2};
+  const build=(list,scale)=>list.filter(it=>it.t.includes(type)).map(it=>card(it,calc(it,scale))).sort((x,y)=>order[x.cls]-order[y.cls]||(x.cls==="nope"?x.need-y.need:y.need-x.need));
+  const clothes=build(GEN[who],true), small=build(GEN.small,false);
+  $("genClothes").innerHTML=clothes.map(c=>c.html).join("")||'<div class="empty">No clothes ideas for this fabric type.</div>';
+  $("genSmall").innerHTML=small.map(c=>c.html).join("")||'<div class="empty">No small projects for this fabric type.</div>';
+  $("tip").textContent=TIPS[type];
+  $("genTitle").textContent="What you can make with "+fmt(haveM,unit);
+  return clothes.filter(c=>c.cls!=="nope").length+small.filter(c=>c.cls!=="nope").length;
+}
+
+f.addEventListener("submit",e=>e.preventDefault());
+f.addEventListener("input",e=>{ if(e.target.name==="p") fillSizes(); run(); });
+$("pieceGrid").addEventListener("click",e=>{const b=e.target.closest("button.gc");if(!b||b.disabled)return;selScrap=b.dataset.s;run();$("layoutBox").scrollIntoView({behavior:"smooth",block:"center"});});
+f.addEventListener("change",e=>{ if(e.target.name==="pu"){ ["pw","pl"].forEach(id=>{const v=parseFloat($(id).value)||0;$(id).value=(e.target.value==="in"?v/2.54:v*2.54).toFixed(e.target.value==="in"?1:0);}); } if(e.target.name==="unit"){ const v=parseFloat($("len").value)||0; $("len").value=(e.target.value==="yd"?v*M2Y:v/M2Y).toFixed(1);} if(e.target.name==="p") fillSizes(); run(); });
+fillSizes(); run();
+})();
+</script>
+<!-- /wp:html -->
